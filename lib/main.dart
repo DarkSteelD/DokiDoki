@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import './screens/home.dart';
-import './screens/otchet.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_todo_app/screens/home_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -13,12 +14,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarColor: Colors.transparent));
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'ToDo App',
-      //home: Home(),
-      home : ReportPage(),
+        const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+    return const ProviderScope(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'ToDo App',
+        home: HomePage(),
+        //home : ReportPage(),
+      ),
     );
   }
 }
