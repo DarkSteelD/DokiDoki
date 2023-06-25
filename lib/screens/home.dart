@@ -4,14 +4,14 @@ import '../model/todo.dart';
 import '../constants/colors.dart';
 import '../widgets/todo_item.dart';
 
-class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+class TaskList extends StatefulWidget {
+  const TaskList({Key? key}) : super(key: key);
 
   @override
-  State<Home> createState() => _HomeState();
+  State<TaskList> createState() => _TaskListState();
 }
 
-class _HomeState extends State<Home> {
+class _TaskListState extends State<TaskList> {
   final todosList = ToDo.todoList();
   List<ToDo> _foundToDo = [];
   final _todoController = TextEditingController();
@@ -26,7 +26,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: tdBGColor,
-      appBar: AppBar(title:Text("Задачи")),
+      appBar: AppBar(title: Text("Задачи")),
       body: Stack(
         children: [
           Container(
@@ -79,10 +79,8 @@ class _HomeState extends State<Home> {
                     horizontal: 20,
                     vertical: 5,
                   ),
-
                 ),
               ),
-
             ]),
           ),
         ],
@@ -102,12 +100,13 @@ class _HomeState extends State<Home> {
     });
   }
 
-  void _addToDoItem(String toDo,int cel,String Daten) {
+  void _addToDoItem(String toDo, int cel, String Daten) {
     setState(() {
       todosList.add(ToDo(
-        id: DateTime.now().millisecondsSinceEpoch.toString(),
-        todoText: toDo, cell:cel, Date: Daten
-      ));
+          id: DateTime.now().millisecondsSinceEpoch.toString(),
+          todoText: toDo,
+          cell: cel,
+          Date: Daten));
     });
     _todoController.clear();
   }

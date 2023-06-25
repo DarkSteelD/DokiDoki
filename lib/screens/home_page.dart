@@ -22,9 +22,9 @@ class _HomePageState extends ConsumerState<HomePage> {
   @override
   Widget build(BuildContext context) {
     final pages = [
-      Home(),
-      Home(),
-      ChatPage(),
+      TaskList(),
+      TaskList(),
+      const ChatPage(),
       ReportPage(),
     ];
     return Scaffold(
@@ -40,38 +40,70 @@ class _HomePageState extends ConsumerState<HomePage> {
             ),
           ),
         ),
-        child: BottomNavigationBar(
-          currentIndex: ref.read(indexInBottomNavigationBar),
-          onTap: (value) {
-            ref.read(indexInBottomNavigationBar.notifier).state = value;
-          },
-          items: const [
-            BottomNavigationBarItem(
-              label: 'Задачи',
-              icon: Icon(
-                Icons.home,
-                color: Colors.black,
+        child: Row(
+          children: [
+            Expanded(
+              child: ColoredBox(
+                color: ref.read(indexInBottomNavigationBar.notifier).state == 0
+                    ? const Color(0xFF78A844)
+                    : Colors.black.withOpacity(0),
+                child: IconButton(
+                  icon: const Icon(
+                    Icons.task,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    ref.read(indexInBottomNavigationBar.notifier).state = 0;
+                  },
+                ),
               ),
             ),
-            BottomNavigationBarItem(
-              label: 'Карта',
-              icon: Icon(
-                Icons.pin_drop,
-                color: Colors.black,
+            Expanded(
+              child: ColoredBox(
+                color: ref.read(indexInBottomNavigationBar.notifier).state == 1
+                    ? const Color(0xFF78A844)
+                    : Colors.black.withOpacity(0),
+                child: IconButton(
+                  icon: const Icon(
+                    Icons.pin_drop,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    ref.read(indexInBottomNavigationBar.notifier).state = 1;
+                  },
+                ),
               ),
             ),
-            BottomNavigationBarItem(
-              label: 'Сообщения',
-              icon: Icon(
-                Icons.message,
-                color: Colors.black,
+            Expanded(
+              child: ColoredBox(
+                color: ref.read(indexInBottomNavigationBar.notifier).state == 2
+                    ? const Color(0xFF78A844)
+                    : Colors.black.withOpacity(0),
+                child: IconButton(
+                  icon: const Icon(
+                    Icons.message,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    ref.read(indexInBottomNavigationBar.notifier).state = 2;
+                  },
+                ),
               ),
             ),
-            BottomNavigationBarItem(
-              label: 'Архив',
-              icon: Icon(
-                Icons.archive,
-                color: Colors.black,
+            Expanded(
+              child: ColoredBox(
+                color: ref.read(indexInBottomNavigationBar.notifier).state == 3
+                    ? const Color(0xFF78A844)
+                    : Colors.black.withOpacity(0),
+                child: IconButton(
+                  icon: const Icon(
+                    Icons.home,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    ref.read(indexInBottomNavigationBar.notifier).state = 3;
+                  },
+                ),
               ),
             ),
           ],

@@ -169,55 +169,50 @@ class ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Stack(
-          children: [
-            Container(
-              alignment: Alignment.center,
-              width: double.infinity,
-              height: 52,
-              decoration: BoxDecoration(
-                border: Border.all(width: 2),
-              ),
-              child: const Text(
-                'Чат с технологом',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF78A844),
+        title: const Center(
+          child: Text(
+            'Чат с технологом',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 52,
-              ),
-              child: Chat(
-                emptyState: const SizedBox(),
-                showUserAvatars: true,
-                isLastPage: true,
-                l10n: const ChatL10nRu(),
-                theme: DefaultChatTheme(
-                  primaryColor: Colors.green,
-                  secondaryColor: Colors.grey,
-                  inputBorderRadius: BorderRadius.zero,
-                  inputBackgroundColor: Colors.white54,
-                  inputTextColor: Colors.black,
-                  inputContainerDecoration: BoxDecoration(
-                    border: Border.all(width: 2, color: Colors.white54),
-                  ),
-                ),
-                messages: _messages,
-                onAttachmentPressed: _handleAtachmentPressed,
-                onMessageTap: _handleMessageTap,
-                onPreviewDataFetched: _handlePreviewDataFetched,
-                onSendPressed: _handleSendPressed,
-                user: _user,
-              ),
-            ),
-          ],
+          ),
         ),
+      ),
+      body: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 52,
+            ),
+            child: Chat(
+              emptyState: const SizedBox(),
+              showUserAvatars: true,
+              isLastPage: true,
+              l10n: const ChatL10nRu(),
+              theme: DefaultChatTheme(
+                primaryColor: Colors.green,
+                secondaryColor: Colors.grey,
+                inputBorderRadius: BorderRadius.zero,
+                inputBackgroundColor: Colors.white54,
+                inputTextColor: Colors.black,
+                inputContainerDecoration: BoxDecoration(
+                  border: Border.all(width: 2, color: Colors.white54),
+                ),
+              ),
+              messages: _messages,
+              onAttachmentPressed: _handleAtachmentPressed,
+              onMessageTap: _handleMessageTap,
+              onPreviewDataFetched: _handlePreviewDataFetched,
+              onSendPressed: _handleSendPressed,
+              user: _user,
+            ),
+          ),
+        ],
       ),
     );
   }
