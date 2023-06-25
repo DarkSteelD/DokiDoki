@@ -1,114 +1,147 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../model/todo.dart';
 import '../constants/colors.dart';
 
 class ToDoItem extends StatelessWidget {
   final ToDo todo;
-  final onToDoChanged;
-  final onDeleteItem;
+  final Function onToDoChanged;
 
   const ToDoItem({
     Key? key,
     required this.todo,
     required this.onToDoChanged,
-    required this.onDeleteItem,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 20),
-      child: ListTile(
-        onTap: () {
-          onToDoChanged(todo);
-        },
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 13.0),
+      child: Container(
+        width: 352,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: const [
+            BoxShadow(
+              offset: Offset(0, 4),
+              blurRadius: 4,
+              color: Color(0x40000000),
+            )
+          ],
+          borderRadius: BorderRadius.circular(10),
         ),
-        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-        tileColor: Colors.white,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
+        child: InkWell(
+          onTap: () {
+            onToDoChanged(todo);
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: 19,
+              right: 12,
+              bottom: 11,
+              top: 7,
+            ),
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (todo.isDone)
-                  Container(
-                    width: 10,
-                    height: 10,
-                    margin: EdgeInsets.only(bottom: 5),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.red,
+                Row(
+                  children: [
+                    Text(
+                      todo.todoText!,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: tdBlack,
+                        fontWeight: todo.isDone ? FontWeight.bold : null,
+                      ),
                     ),
-                  ),
-                SizedBox(height: 8.0),
-                Text(
-                  todo.todoText!,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: tdBlack,
-                    fontWeight: todo.isDone ?  FontWeight.bold : null,
-                  ),
+                    const Spacer(),
+                    if (todo.isDone)
+                      Container(
+                        width: 18,
+                        height: 18,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color(0xFFDC0505),
+                        ),
+                      ),
+                  ],
                 ),
-                SizedBox(height: 8.0),
-                Text(
-                  'Cell: ${todo.cell}',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: tdBlack,
-                  ),
+                const SizedBox(height: 8.0),
+                Row(
+                  children: [
+                    const Text(
+                      'Ячейка: ',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Color(0xFF414141),
+                      ),
+                    ),
+                    Text(
+                      '${todo.cell}',
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: tdBlack,
+                      ),
+                    ),
+                    const Spacer(),
+                    Text(
+                      '${DateTime.now().day} ${DateFormat(DateFormat.MONTH, 'ru').format(DateTime.now())} ${DateTime.now().year} ${DateFormat(DateFormat.HOUR24_MINUTE).format(DateTime.now())}',
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: Color(0xFF414141),
+                      ),
+                    ),
+                  ],
                 ),
-                SizedBox(height: 8.0),
-
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle button press
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.white, // Прозрачный цвет фона
-                    onSurface: Colors.black, // Цвет текста и границы кнопки
-                    side: BorderSide(color: Colors.black),
-                    // Черная граница
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0), // Скругление углов кнопки
+                const SizedBox(height: 8.0),
+                Row(
+                  children: [
+                    SizedBox(
+                      height: 25,
+                      width: 108,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          onToDoChanged(todo);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          disabledForegroundColor:
+                              Colors.black.withOpacity(0.38),
+                          side: const BorderSide(color: Colors.black),
+                          // Черная граница
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                              45.0,
+                            ), // Скругление углов кнопки
+                          ),
+                        ),
+                        child: Text(
+                          'Подробнее',
+                          style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 13,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                  child: Text('Подробнее',
-                    style: TextStyle(
-                        color: Colors.black
+                    const Spacer(),
+                    Text(
+                      'Новая задача',
+                      style: GoogleFonts.inter(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 13,
+                        color: const Color(0xC9FF7A00),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ],
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  todo.Date!,
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: tdBlack,
-                  ),
-                ),
-                Text(
-                  'Cтатус: ${todo.Status}',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: tdBlack,
-                  ),
-                ),
-                SizedBox(height: 8.0),
-
-              ],
-            ),
-          ],
+          ),
         ),
-
-
       ),
     );
   }
