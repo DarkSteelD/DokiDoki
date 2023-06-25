@@ -15,16 +15,12 @@ class FieldToolTip extends ConsumerWidget {
         color: Color(0xFFF2F2F2),
         borderRadius: BorderRadius.all(Radius.circular(15)),
       ),
-      width: 300,
       height: 180,
       padding: const EdgeInsets.all(10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text('Ячейка ${cell.id}'),
-          const SizedBox(
-            height: 17,
-          ),
           Expanded(
             child: ListView.separated(
               itemCount: 6,

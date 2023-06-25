@@ -4,7 +4,7 @@ import 'package:flutter_todo_app/screens/task_list.dart';
 
 import '../map_page/view/map_page.dart';
 import 'chat_page.dart';
-import 'otchet.dart';
+import 'profile_page.dart';
 
 final indexInBottomNavigationBar = StateProvider<int>(
   (ref) {
@@ -26,7 +26,7 @@ class _HomePageState extends ConsumerState<HomePage> {
       const TaskList(),
       const MapPage(),
       const ChatPage(),
-      ReportPage(),
+      const ProfilePage(),
     ];
     return Scaffold(
       body: pages.elementAt(

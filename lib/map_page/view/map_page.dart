@@ -14,6 +14,7 @@ class MapPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final fields = ref.watch(fieldsStateHolder);
+    final selectedField = ref.watch(selectedFieldStateHolder);
     return Scaffold(
       body: Stack(
         children: [
@@ -29,7 +30,6 @@ class MapPage extends ConsumerWidget {
                 height: 940,
                 child: Consumer(
                   builder: (context, ref, child) {
-                    final selectedField = ref.watch(selectedFieldStateHolder);
                     final manager = ref.read(mapPageManager);
                     return Stack(
                       children: [
@@ -51,18 +51,6 @@ class MapPage extends ConsumerWidget {
                             ),
                           ),
                         ),
-                        AnimatedOpacity(
-                          opacity: selectedField != -1 ? 1 : 0,
-                          duration: const Duration(milliseconds: 300),
-                          child: selectedField != -1
-                              ? Transform.translate(
-                                  offset: manager
-                                      .calculateToolTipOffset(selectedField),
-                                  child:
-                                      FieldToolTip(indexOfField: selectedField),
-                                )
-                              : const SizedBox(),
-                        ),
                       ],
                     );
                   },
@@ -70,6 +58,11 @@ class MapPage extends ConsumerWidget {
               ),
             ),
           ),
+          if (selectedField != -1)
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: FieldToolTip(indexOfField: selectedField),
+            ),
         ],
       ),
     );
