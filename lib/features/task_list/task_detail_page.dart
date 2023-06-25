@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
-import '../constants/colors.dart';
-import '../model/todo.dart';
+import '../../support/constants/colors.dart';
+import 'model/todo.dart';
 
 class TaskDetailPage extends StatefulWidget {
   final ToDo task;

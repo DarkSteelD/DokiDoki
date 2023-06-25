@@ -1,11 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_todo_app/screens/task_detail_page.dart';
+import 'package:flutter_todo_app/features/task_list/task_detail_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../model/todo.dart';
-import '../constants/colors.dart';
+import '../task_list/model/todo.dart';
+import '../../support/constants/colors.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);

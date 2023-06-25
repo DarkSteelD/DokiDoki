@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_todo_app/constants/colors.dart';
+import 'package:flutter_todo_app/support/constants/colors.dart';
 
 import '../map_page_manager.dart';
 import 'field_tool_tip.dart';

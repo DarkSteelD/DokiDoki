@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo_app/screens/task_detail_page.dart';
+import 'package:flutter_todo_app/features/task_list/task_detail_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../model/todo.dart';
-import '../constants/colors.dart';
-import '../widgets/todo_item.dart';
+import 'model/todo.dart';
+import '../../support/constants/colors.dart';
+import '../../support/widgets/todo_item.dart';
 
 class TaskList extends StatefulWidget {
   const TaskList({Key? key}) : super(key: key);

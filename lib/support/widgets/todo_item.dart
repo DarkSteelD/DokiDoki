@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../model/todo.dart';
+import '../../features/task_list/model/todo.dart';
 import '../constants/colors.dart';
 
 class ToDoItem extends StatelessWidget {

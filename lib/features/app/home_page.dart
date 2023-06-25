@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_todo_app/screens/task_list.dart';
+import 'package:flutter_todo_app/features/task_list/task_list.dart';
 
+import '../chat_page/chat_page.dart';
 import '../map_page/view/map_page.dart';
-import 'chat_page.dart';
-import 'profile_page.dart';
+import '../profile/profile_page.dart';
 
 final indexInBottomNavigationBar = StateProvider<int>(
   (ref) {
