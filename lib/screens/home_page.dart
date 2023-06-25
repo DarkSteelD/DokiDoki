@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_todo_app/screens/task_list.dart';
 
+import '../map_page/view/map_page.dart';
 import 'chat_page.dart';
 import 'otchet.dart';
 
@@ -23,7 +24,7 @@ class _HomePageState extends ConsumerState<HomePage> {
   Widget build(BuildContext context) {
     final pages = [
       const TaskList(),
-      const TaskList(),
+      const MapPage(),
       const ChatPage(),
       ReportPage(),
     ];
